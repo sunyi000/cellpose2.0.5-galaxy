@@ -9,7 +9,7 @@ LABEL about.home="https://github.com/MouseLand/cellpose"
 LABEL about.license="BSD 3-Clause"
 LABEL about.documentation="https://cellpose.readthedocs.io/en/latest/"
 
-LABEL maintainer ="sunyi000@gmail.com"
+MAINTAINER Yi Sun <sunyi000@gmail.com>
 
 ARG DEBIAN_FRONTEND="noninteractive"
 ARG CELLPOSE_VERSION="2.0.5"
@@ -42,9 +42,8 @@ RUN apt-get update -qq && \
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
     locale-gen
 
-
-
-RUN pip install -U pip; apk add build-base; pip install numpy numba>=0.43.1
+RUN pip install -U pip
+RUN pip install numpy numba>=0.43.1
 RUN pip install wheel scipy
 RUN pip install --no-cache-dir PyQt5 PyQt5.sip torch>=1.6 opencv-python-headless pyqtgraph>=0.11.0rc0 natsort google-cloud-storage 
 
@@ -53,6 +52,5 @@ RUN pip install -U scikit-image matplotlib
 RUN pip install scikit-learn tqdm tifffile fastremap 
 RUN pip install cellpose==$CELLPOSE_VERSION
 
-#ENTRYPOINT ["conda", "run", "-n", "cellpose", "python", "-m", "cellpose"]
 
 
