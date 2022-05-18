@@ -5,7 +5,9 @@
 	<token name="@VERSION_SUFFIX@">0</token>
     </macros>
     <requirements>
-	    <container type="docker">biocontainers/cellpose:2.0.5_cv1</container>
+	    <!--<container type="docker">biocontainers/cellpose:2.0.5_cv1</container>-->
+	    <!-- Modify singularity image path below -->
+	    <container type="singularity">/opt/singularity-containers/cellpose205.simg</container>
     </requirements>
     <stdio>
         <exit_code range="1:" level="fatal" description="Error occurred. Please check Tool Standard Error"/>
